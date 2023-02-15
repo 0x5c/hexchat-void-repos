@@ -5,6 +5,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 
 ## [Unreleased]
+### Added
+- Support for void-fleet and void-builder.
+- Workarounds for soju.
 
 
 ## [1.1.0] - 2022-06-26

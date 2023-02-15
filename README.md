@@ -1,18 +1,21 @@
-# An hexchat plugin for voidlinux's #xbps channel
+# A hexchat plugin for voidlinux's #xbps channel
 
 ## Features
 
-- Reformats void-robot's messages to be easier to read
+- Reformats messages from void-robot, void-builder, and void-fleet to be easier to read
 - [Planned] Ability to generate URLs and title previews for issue mentions in the channel
 
 
 ![Reformatted PR notice](img/robot_pr.png)  
-![Reformatted Push notice](img/robot_push.png)
+![Reformatted Push notice](img/robot_push.png)  
+![Reformatted builder success](img/builder_success.png)  
+![Reformatted builder fail](img/builder_fail.png)  
+![Reformatted fleet alerts](img/fleet_alert.png)  
 
 ## Requirements
 
 - Hexchat 2.16.x (2.14.x might be fine but I did not test)
-- The python plugin **compiled with python3.9+**. `hexchat-python3` from the void repos will work.
+- The python plugin **compiled with python3.10+**. `hexchat-python3` from the void repos will work.
 
 ## Installation
 
