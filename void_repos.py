@@ -2,7 +2,7 @@
 hexchat-void-repos - A plugin for voidlinux's #xbps channel
 ---
 
-Copyright (C) 2022 0x5c
+Copyright (C) 2022-2023 0x5c
 Released under the MIT Licence
 """
 
@@ -12,7 +12,7 @@ import hexchat
 
 
 __module_name__ = "void-repos"
-__module_version__ = "1.1.0"
+__module_version__ = "1.2.0"
 __module_description__ = "Plugin for Voidlinux's git repositories"
 debug = False
 workaround_soju = False

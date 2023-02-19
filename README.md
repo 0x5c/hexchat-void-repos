@@ -24,5 +24,5 @@ Just place the plugin file in `~/.config/hexchat/addons/`.
 
 ## Licence
 
-Copyright (C) 2022 0x5c  
+Copyright (C) 2022-2023 0x5c  
 Released under the MIT Licence
