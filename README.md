@@ -22,6 +22,12 @@
 Just place the plugin file in `~/.config/hexchat/addons/`.
 
 
+## Workarounds
+
+### Soju
+
+The bouncer [Soju](https://soju.im) sends notices in the backlog as server notices, not channel notices. To ensure messages in backlog are formatted by this plugin, add `void_repos_sojuhack = 1` to `$XDG_CONFIG_HOME/hexchat/addon_python.conf` and reload the Python plugin or restart Hexchat.
+
 ## Licence
 
 Copyright (C) 2022-2023 0x5c  

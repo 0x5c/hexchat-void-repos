@@ -1,5 +1,5 @@
 """
-hexchat-void-repos - A plugin for voidlinux's #xbps channel
+hexchat-void-repos - A plugin for Void Linux's notification bots
 ---
 
 Copyright (C) 2022-2023 0x5c
@@ -13,9 +13,15 @@ import hexchat
 
 __module_name__ = "void-repos"
 __module_version__ = "1.2.0"
-__module_description__ = "Plugin for Voidlinux's git repositories"
-debug = False
-workaround_soju = False
+__module_description__ = "Plugin for Void Linux's notification bots"
+
+
+# preferences should be put in $XDG_CONFIG_HOME/hexchat/addon_python.conf
+# and should be 0 (False) or 1 (True)
+# if unset, defaults to False
+debug = bool(hexchat.get_pluginpref("void_repos_debug"))
+# if unset, defaults to False
+workaround_soju = bool(hexchat.get_pluginpref("void_repos_sojuhack"))
 
 
 def handle_ch_notice(word: list[str], word_eol: list[str], userdata):
