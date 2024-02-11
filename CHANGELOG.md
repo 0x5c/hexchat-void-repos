@@ -5,6 +5,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 
 ## [Unreleased]
+### Added
+- Configuration option for soju workaround.
 
 
 ## [1.2.0] - 2023-02-19
