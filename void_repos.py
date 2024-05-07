@@ -22,6 +22,8 @@ __module_description__ = "Plugin for Void Linux's notification bots"
 debug = bool(hexchat.get_pluginpref("void_repos_debug"))
 # if unset, defaults to False
 workaround_soju = bool(hexchat.get_pluginpref("void_repos_sojuhack"))
+# if unset, defaults to False
+quiet = bool(hexchat.get_pluginpref("void_repos_quiet"))
 
 
 def handle_ch_notice(word: list[str], word_eol: list[str], userdata):
@@ -57,6 +59,8 @@ def handle_void(source: str, msg: str):
         hexchat.prnt(line2)
     if line3:
         hexchat.prnt(f"\00314{line3}")
+    if not quiet:
+        hexchat.command("GUI COLOR 2")
     return hexchat.EAT_HEXCHAT
 
 
