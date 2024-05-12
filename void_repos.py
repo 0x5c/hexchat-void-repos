@@ -39,7 +39,7 @@ def handle_sv_notice(word: list[str], word_eol: list[str], userdata):
 
 
 def handle_void(source: str, msg: str):
-    match source:
+    match source.rstrip("_^"):
         case "void-robot":
             bot = "Robot"
             parser = parse_robot
