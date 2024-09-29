@@ -9,6 +9,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Configuration option for soju workaround.
 ### Changed
 - Parsing of void-builder notices for the new format of buildbot messages.
+- Ability to display as a new message in the buffer list.
+### Fixed
+- Display when bots have alternative nicknames.
 
 
 ## [1.2.0] - 2023-02-19
