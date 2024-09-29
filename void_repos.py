@@ -46,7 +46,7 @@ def handle_void(source: str, msg: str):
             parser = parse_fleet
         case "void-builder":
             bot = "Builder"
-            parser = parse_builder
+            parser = parse_builder4
         case _:
             return hexchat.EAT_NONE
 
@@ -207,3 +207,54 @@ def parse_builder(msg: str) -> tuple[str, str, str]:
             blame = ""
         return (f"{status} \00311on {builder} \00311for {commits}", blame, url)
     return (f"\00311{orig_msg}", "", "")
+
+
+# Test strings
+#   Build [#2](https://build.voidlinux.org/#/builders/2/builds/2) of `armv6l-musl` failed.
+#   Build [#69](https://build.voidlinux.org/#/builders/2/builds/2) of `armv6l-musl` completed successfully.
+#   Build [#420](https://build.voidlinux.org/#/builders/2/builds/2) of `x86_64` was skipped.
+#   Build [#2](https://build.voidlinux.org/#/builders/2/builds/2) of `armv6l-musl` was cancelled.
+#   Build [#2](https://build.voidlinux.org/#/builders/2/builds/2) of `armv6l-musl` has been retried.
+
+
+def parse_builder4(msg: str) -> tuple[str, str, str]:
+    match msg:
+        case "<(^.^<)":
+            return (f"\00305{msg}", "", "")
+        case "<(^.^)>":
+            return (f"\00307{msg}", "", "")
+        case "(>^.^)>":
+            return (f"\00308{msg}", "", "")
+        case "(7^.^)7":
+            return (f"\00309{msg}", "", "")
+        case "(>^.^<)":
+            return (f"\00312{msg}", "", "")
+        case _:
+            pass
+
+    if m := re.match(r"Build \[(?P<number>#\d+)\]\((?P<url>\S+)\) of `(?P<builder>\S+)` (?P<status>.+)\.$", msg):
+        number = m.group("number")
+        url = m.group("url")
+        builder = "\00312" + m.group("builder")
+        status = m.group("status")
+
+        match status:
+            case "completed successfully":
+                status = "\00303Success"
+            case "failed":
+                status = "\00305Failure"
+            case "was skipped":
+                status = "\00307Skipped"
+            case "completed with warnings":
+                status = "\00307Warnings"
+            case "stopped with exception":
+                status = "\00307Exception"
+            case "has been retried":
+                status = "\00307Retried"
+            case "was cancelled":
+                status = "\00313Cancelled"
+            case _:
+                status = f"\00307{status}"
+
+        return (f"{status} \00311on {builder} \00311for build {number}", "", url)
+    return (f"\00311{msg}", "", "")
