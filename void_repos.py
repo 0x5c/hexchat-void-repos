@@ -2,7 +2,7 @@
 hexchat-void-repos - A plugin for Void Linux's notification bots
 ---
 
-Copyright (C) 2022-2023 0x5c
+Copyright (C) 2022-2024 0x5c
 Released under the MIT Licence
 """
 
