@@ -12,7 +12,7 @@ import hexchat
 
 
 __module_name__ = "void-repos"
-__module_version__ = "1.2.0"
+__module_version__ = "1.3.0"
 __module_description__ = "Plugin for Void Linux's notification bots"
 
 
