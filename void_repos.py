@@ -22,8 +22,13 @@ __module_description__ = "Plugin for Void Linux's notification bots"
 debug = bool(hexchat.get_pluginpref("void_repos_debug"))
 # if unset, defaults to False
 workaround_soju = bool(hexchat.get_pluginpref("void_repos_sojuhack"))
-# if unset, defaults to False
-quiet = bool(hexchat.get_pluginpref("void_repos_quiet"))
+# if unset, defaults to True
+if (quiet := hexchat.get_pluginpref("void_repos_quiet")) is None:
+    quiet = True
+else:
+    quiet = bool(quiet)
+
+extra_highlight = hexchat.get_prefs("irc_extra_hilight").split(",")
 
 
 def handle_ch_notice(word: list[str], word_eol: list[str], userdata):
@@ -54,13 +59,27 @@ def handle_void(source: str, msg: str):
 
     line1, line2, line3 = parser(msg)
 
-    hexchat.prnt(f"\00311Void\00310{bot}\t\x0f{line1}")
+    if quiet:
+        colour = 0
+    else:
+        colour = 2
+    nickpfx = ""
+
+    mynick = hexchat.get_info("nick").lower()
+    words = msg.lower().split()
+    for word in [mynick, *extra_highlight]:
+        if word in words:
+            colour = 3
+            nickpfx = "\00323*** "
+            break
+
+    hexchat.prnt(f"{nickpfx}\00311Void\00310{bot}\t\x0f{line1}")
     if line2:
         hexchat.prnt(line2)
     if line3:
         hexchat.prnt(f"\00314{line3}")
-    if not quiet:
-        hexchat.command("GUI COLOR 2")
+    if colour > 0:
+        hexchat.command(f"GUI COLOR {colour} -NOOVERRIDE")
     return hexchat.EAT_HEXCHAT
 
 

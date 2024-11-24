@@ -5,6 +5,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 
 ## [Unreleased]
+### Fixed
+- Highlights being hidden in the buffer list if quiet mode is disabled.
+- Highlights in parsed messages not being highlighted.
+- Quiet mode being off by default (now defaults to previous behaviour, on by default).
 
 
 ## [1.3.0] - 2024-09-29
